@@ -10,7 +10,23 @@ public class ChooseNewPasswordPage extends EnterSecurityCodePage {
         WebElement input = driver.findElement(By.name("ok"));
         input.click();
 
-        return new
+        return new HelpPage();
+    }
+
+    public ChooseNewPasswordPage pressHideOrShowPassword(){
+
+        WebElement input = driver.findElement(By.id("password_new_show"));
+        input.click();
+
+        return this;
+    }
+
+    public ChooseNewPasswordPage pressContinueButton(){
+
+        WebElement input = driver.findElement(By.id("btn_continue"));
+        input.click();
+
+        return new PasswordChangedPage();
     }
 
 }
