@@ -1,23 +1,21 @@
 package WebTests.Support;
 
-import WebTests.Pages.MainFacebookPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-
 
 
 public class WebDriverInstances {
 
-    public static WebDriver driver = new ChromeDriver();
+    //public static WebDriver driver = new ChromeDriver();
 
 
-    public WebDriverInstances goToFacebookThroughChrome(){
+    public static WebDriver goToFacebookThroughChrome(){
 
         System.setProperty("webdriver.chrome.driver", "D:\\chromedriver.exe");
-        driver.get("https://pt-br.facebook.com/");
+        WebDriver driver = new ChromeDriver();
+        String baseUrl = "https://pt-br.facebook.com/";
+        driver.get(baseUrl);
 
-        return new MainFacebookPage();
+        return driver;
     }
-
 }
