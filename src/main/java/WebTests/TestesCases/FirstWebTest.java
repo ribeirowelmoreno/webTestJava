@@ -22,11 +22,8 @@ public class FirstWebTest {
     public void goToMainScreenPage(){
 
         new MainFacebookPage(driver)
-                .inputEmail("ribeirowelemoreno@gmail.com");
-
-
-
-
+                .inputEmail("ribeirowelemoreno@gmail.com")
+                .inputPassword("wel421563");
     }
 
 }

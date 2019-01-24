@@ -16,15 +16,15 @@ public class MainFacebookPage {
 
         return this;
     }
-//
-//    public MainFacebookPage inputPassword (String email){
-//
-//        WebElement input = driver.findElement(By.id("pass"));
-//        input.sendKeys(email);
-//        input.submit();
-//
-//        return new FacebookFeedPage();
-//    }
+
+    public MainFacebookPage inputPassword (String email){
+
+        WebElement input = driver.findElement(By.id("pass"));
+        input.sendKeys(email);
+        input.submit();
+
+        return this;
+    }
 //
 //    public MainFacebookPage clickInForgotPassword(){
 //
