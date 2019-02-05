@@ -24,27 +24,18 @@ public class UserInfos {
         //Wait unitl 5 seconds for any element be displayed at screen
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
-        driver.get("http://www.juliodelima.com.br/taskit");
+        driver.get("http://www.facebook.com.br/");
 
         //Clicar no link com text "Sign in"
-        driver.findElement(By.linkText("Sing in")).click();
+        driver.findElement(By.id("email")).sendKeys("ribeirowelmoreno@gmail.com");
 
-        //Identificando o formulario de login"
-        WebElement signingBoxForm = driver.findElement(By.id("signingbox"));
+        driver.findElement(By.name("pass")).sendKeys("wel421563");
 
-        //Digitar o nome dentro do name "login"
-        signingBoxForm.findElement(By.name("login")).sendKeys("julio0001");
-
-        //Clicar no campo "password" dentro de "signingbox"
-        signingBoxForm.findElement(By.name("password")).sendKeys("123456");
-
-        //Clicar no botao "Sign in"
-        driver.findElement(By.linkText("SIGN IN")).click();
-
-        //Verificar se o ligin foi feito pelo class "me"
-        WebElement me = signingBoxForm.findElement(By.className("me"));
-        String texOnMeElement = me.getText();
-        assertEquals("Hi, Julio", texOnMeElement);
+        driver.findElement(By.id("loginbutton")).submit();
+//        //Verificar se o ligin foi feito pelo class "me"
+//        WebElement me = signingBoxForm.findElement(By.className("me"));
+//        String texOnMeElement = me.getText();
+//        assertEquals("Hi, Julio", texOnMeElement);
 
         //Fechar o navegador
     }
