@@ -24,20 +24,26 @@ public class UserInfos {
         //Wait unitl 5 seconds for any element be displayed at screen
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
-        driver.get("http://www.facebook.com.br/");
+        driver.get("http://www.juliodelima.com.br/taskit");
 
         //Clicar no link com text "Sign in"
-        driver.findElement(By.id("email")).sendKeys("ribeirowelmoreno@gmail.com");
+        driver.findElement(By.linkText("Sign in")).click();
 
-        driver.findElement(By.name("pass")).sendKeys("wel421563");
+        WebElement formularioSigningBox = driver.findElement(By.id("signingbox"));
 
-        driver.findElement(By.id("loginbutton")).submit();
-//        //Verificar se o ligin foi feito pelo class "me"
-//        WebElement me = signingBoxForm.findElement(By.className("me"));
-//        String texOnMeElement = me.getText();
-//        assertEquals("Hi, Julio", texOnMeElement);
+        formularioSigningBox.findElement(By.name("login")).sendKeys("julio0001");
+
+        formularioSigningBox.findElement(By.name("password")).sendKeys("123456");
+
+        driver.findElement(By.linkText("SIGN IN")).click();
+
+        //Verificar se o ligin foi feito pelo class "me"
+        WebElement me = driver.findElement(By.className("me"));
+        String textOnMeElement = me.getText();
+        assertEquals("Hi, Julio", textOnMeElement);
 
         //Fechar o navegador
+        driver.quit();
     }
 
 }
