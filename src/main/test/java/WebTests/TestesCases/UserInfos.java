@@ -1,9 +1,17 @@
 package WebTests.TestesCases;
 
+import Support.Generator;
+import Support.Screenshot;
+import org.easetech.easytest.annotation.DataLoader;
+import org.easetech.easytest.annotation.Param;
+import org.easetech.easytest.runner.DataDrivenTestRunner;
 import org.junit.After;
 import org.junit.Assert.*;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.TestName;
+import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,8 +24,14 @@ import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertEquals;
 
+@RunWith(DataDrivenTestRunner.class)
+@DataLoader(filePaths = "UserInfos.csv")
+
 public class UserInfos {
     private WebDriver driver;
+
+    @Rule
+    public TestName test = new TestName();
 
     @Before
     public void setUp(){
@@ -47,7 +61,7 @@ public class UserInfos {
     }
 
     @Test
-    public void testUserLogin() {
+    public void testUserLogin(@Param(name = "type")String registerType, @Param(name = "contact")String phoneOrEmail, @Param(name = "message")String expectedMessage) {
 
         //Clicar no link com text "Sign in"
         driver.findElement(By.linkText("Sign in")).click();
@@ -74,10 +88,10 @@ public class UserInfos {
 
        //Na combo de name type, escolher a opção "Phone"
         WebElement typeField = popupAddMoreData.findElement(By.name("type"));
-        new Select(typeField).selectByVisibleText("Phone");
+        new Select(typeField).selectByVisibleText(registerType);
 
        //Colocar no campo de contact, digitar o telefone
-        popupAddMoreData.findElement(By.name("contact")).sendKeys("+5519999999999");
+        popupAddMoreData.findElement(By.name("contact")).sendKeys(phoneOrEmail);
 
        //Clicar no link de text save que está na popup
         popupAddMoreData.findElement(By.linkText("SAVE")).click();
@@ -85,7 +99,7 @@ public class UserInfos {
        //Na mensagem de id "toast-container" validar que o texto é "Your contact has been added!"
         WebElement popMessage = driver.findElement(By.id("toas-container"));
         String mensagem = popMessage.getText();
-        assertEquals("Your contact has been added!", mensagem);
+        assertEquals(expectedMessage, mensagem);
 
     }
 
@@ -108,6 +122,9 @@ public class UserInfos {
         WebElement popMessage = driver.findElement(By.id("toas-container"));
         String mensagem = popMessage.getText();
         assertEquals("Rest in peace, dear phone!", mensagem);
+
+        String screenshotFile = "D://Wellynton//Screenshots/" + Generator.dataAndTimeToFile() + test.getMethodName() + ".png";
+        Screenshot.take(driver,screenshotFile);
 
         //Aguardar até 10s para que a janela desapareça
         WebDriverWait waiting = new WebDriverWait(driver, 10);

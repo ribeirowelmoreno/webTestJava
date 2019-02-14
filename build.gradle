@@ -13,5 +13,7 @@ repositories {
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     compile group: 'org.seleniumhq.selenium', name: 'selenium-server', version: '3.9.1'
-    
+
+    // https://mvnrepository.com/artifact/org.easetech/easytest
+    compile group: 'org.easetech', name: 'easytest', version: '0.6.2'
 }
