@@ -35,12 +35,6 @@ public class UserInfos {
 
     @Before
     public void setUp(){
-        System.setProperty("webdriver.chrome.driver", "D:\\chromedriver.exe");
-        driver = new ChromeDriver();
-        //Wait unitl 5 seconds for any element be displayed at screen
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-
-        driver.get("http://www.juliodelima.com.br/taskit");
 
         //Clicar no link com text "Sign in"
         driver.findElement(By.linkText("Sign in")).click();
