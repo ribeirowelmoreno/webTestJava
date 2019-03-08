@@ -2,6 +2,7 @@ package WebTests.TestesCases;
 
 import Support.Generator;
 import Support.Screenshot;
+import Support.Web;
 import org.easetech.easytest.annotation.DataLoader;
 import org.easetech.easytest.annotation.Param;
 import org.easetech.easytest.runner.DataDrivenTestRunner;
@@ -35,6 +36,7 @@ public class UserInfos {
 
     @Before
     public void setUp(){
+        driver = Web.createChrome();
 
         //Clicar no link com text "Sign in"
         driver.findElement(By.linkText("Sign in")).click();
