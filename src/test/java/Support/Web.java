@@ -25,13 +25,13 @@ public class Web {
         return driver;
     }
 
-    public static WebDriver createBorwserStack(){
+    public static WebDriver createBrowserStack(){
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setCapability("browser", "Chrome");
-        caps.setCapability("browser_version", "60.0");
+        caps.setCapability("browser_version", "62.0");
         caps.setCapability("os", "Windows");
-        caps.setCapability("os_version", "7");
-        caps.setCapability("resolution", "1280x800");
+        caps.setCapability("os_version", "10");
+        caps.setCapability("resolution", "1024x768");
 
         WebDriver driver = null;
         try {

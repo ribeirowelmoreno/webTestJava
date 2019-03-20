@@ -19,7 +19,7 @@ public class UserInfosPageObjectsTests {
 
     @Before
     public void setUp(){
-        driver = Web.createBorwserStack();
+        driver = Web.createBrowserStack();
     }
 
     @Test
@@ -28,7 +28,7 @@ public class UserInfosPageObjectsTests {
             @Param(name = "password")String password,
             @Param(name = "type")String type,
             @Param(name = "contact")String contact,
-            @Param(name = "expectedMessage")String ExpectedMessage){
+            @Param(name = "expectedMessage")String expectedMessage){
 
        String textToast = new LoginPage(driver)
                 .clickSingIn()
@@ -39,7 +39,7 @@ public class UserInfosPageObjectsTests {
                 .addContact(type, contact)
                 .takeToastText();
 
-        assertEquals(ExpectedMessage, textToast);
+        assertEquals(expectedMessage, textToast);
     }
 
     @After
